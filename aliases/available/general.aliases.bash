@@ -16,7 +16,7 @@ then
   alias ls="ls --color=auto"
 fi
 which gshuf &> /dev/null
-if [ $? -eq 1 ]
+if [ $? -eq 0 ]
 then
   alias shuf=gshuf
 fi
@@ -55,3 +55,14 @@ fi
 # Directory
 alias	md='mkdir -p'
 alias	rd='rmdir'
+
+# Display whatever file is regular file or folder
+catt() {
+  for i in "$@"; do
+    if [ -d "$i" ]; then
+      ls "$i"
+    else
+      cat "$i"
+    fi
+  done
+}
